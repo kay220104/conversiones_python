@@ -4,21 +4,34 @@ pipeline {
     }
 
     stages {
-        stage('Verificar Python') {
+        stage('Entorno') {
             steps {
                 sh 'python3 --version'
-            }
-        }
-
-        stage('Instalar dependencias') {
-            steps {
+                sh 'pip3 --version'
                 sh 'python3 -m pip install pytest'
             }
         }
 
-        stage('Ejecutar pruebas') {
+        stage('Descarga') {
             steps {
-                sh 'python3 -m pytest test_conversiones.py -v'
+                git url: 'https://github.com/kay220104/conversiones_python.git', branch: 'main'
+            }
+        }
+
+        stage('Ejecutar') {
+            steps {
+                sh 'python3 Conversion.py'
+            }
+        }
+
+        stage('Probar') {
+            steps {
+                sh 'python3 -m pytest --junitxml=reports/results.xml'
+            }
+            post {
+                always {
+                    junit 'reports/results.xml'
+                }
             }
         }
     }
