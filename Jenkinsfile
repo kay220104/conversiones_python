@@ -10,9 +10,15 @@ pipeline {
             }
         }
 
+        stage('Instalar dependencias') {
+            steps {
+                sh 'python3 -m pip install pytest'
+            }
+        }
+
         stage('Ejecutar pruebas') {
             steps {
-                sh 'python3 -m unittest test_conversiones.py'
+                sh 'python3 -m pytest test_conversiones.py -v'
             }
         }
     }
