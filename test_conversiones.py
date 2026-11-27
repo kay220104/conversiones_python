@@ -1,46 +1,33 @@
 import pytest
-import Conversion as con 
+import Conversion as con
 
-def test_pulgadas_cm():
+def test_centimetros_pulgadas():
     assert con.centimetrosApulgadas(5.08) == pytest.approx(2)
+
+def test_pulgadas_centimetros():
     assert con.pulgadasAcentimetros(2) == pytest.approx(5.08)
 
-def centimetrosApulgadas(cm):
-    pulgadas = cm / 2.54
-    return pulgadas
+def test_pies_metros():
+    assert con.piesAmetros(10) == pytest.approx(3.048)
 
-def pulgadasAcentimetros(pulgadas):
-    cm = pulgadas * 2.54
-    return cm
+def test_metros_pies():
+    assert con.metrosApies(3.048) == pytest.approx(10)
 
-def piesAmetros(pies):
-    metros = pies * 0.3048
-    return metros
+def test_millas_kilometros():
+    assert con.millasAkilometros(1) == pytest.approx(1.60934)
 
-def metrosApies(metros):
-    pies = metros / 0.3048
-    return pies
+def test_kilometros_millas():
+    assert con.kilometrosAmillas(1.60934) == pytest.approx(1)
 
-def millasAkilometros(millas):
-    kilometros = millas * 1.60934
-    return kilometros
+def test_galones_litros():
+    assert con.galonesAlitros(1) == pytest.approx(3.78541)
 
-def kilometrosAmillas(kilometros):
-    millas = kilometros / 1.60934
-    return millas
+def test_litros_galones():
+    assert con.litrosAgalones(3.78541) == pytest.approx(1)
 
-def galonesAlitros(galones):
-    litros = galones * 3.78541
-    return litros
+def test_libras_kilogramos():
+    assert con.librasAkilogramos(1) == pytest.approx(0.45359237)
 
-def litrosAgalones(litros):
-    galones = litros / 3.78541
-    return galones
+def test_kilogramos_libras():
+    assert con.kilogramosAlibras(0.45359237) == pytest.approx(1)
 
-def librasAkilogramos(libras):
-    kilogramos = libras * 0.45359237
-    return kilogramos
-
-def kilogramosAlibras(kilogramos):
-    libras = kilogramos / 0.45359237
-    return libras
