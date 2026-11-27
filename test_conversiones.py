@@ -1,5 +1,5 @@
 import pytest
-import conversiones_python as con 
+import Conversion as con 
 
 def test_pulgadas_cm():
     assert con.centimetrosApulgadas(5.08) == pytest.approx(2)
